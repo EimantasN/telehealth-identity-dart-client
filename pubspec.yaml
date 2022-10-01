@@ -2,15 +2,15 @@
 # AUTO-GENERATED FILE, DO NOT MODIFY!
 #
 
-name: 'emei_api'
-version: '1.0.0'
-description: 'Emei API client'
-homepage: 'https://github.com/EimantasN/emei-dart-client'
+name: "viallies_identity_api"
+version: "1.0.0"
+description: "Viallies Identity API client"
+homepage: "https://github.com/EimantasN/telehealth-identity-dart-client"
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=2.12.0 <3.0.0"
 dependencies:
-  http: '>=0.13.0 <0.14.0'
-  intl: '^0.17.0'
-  meta: '^1.1.8'
+  http: ">=0.13.0 <0.14.0"
+  intl: "^0.17.0"
+  meta: "^1.1.8"
 dev_dependencies:
-  test: '>=1.16.0 <1.18.0'
+  test: ">=1.16.0 <1.18.0"
