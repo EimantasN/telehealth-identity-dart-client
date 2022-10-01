@@ -13,11 +13,20 @@ part of openapi.api;
 class UserInfoDto {
   /// Returns a new [UserInfoDto] instance.
   UserInfoDto({
+    this.id,
     this.userId,
     this.userName,
     this.email,
     this.claims = const [],
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? id;
 
   String? userId;
 
@@ -29,6 +38,7 @@ class UserInfoDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfoDto &&
+     other.id == id &&
      other.userId == userId &&
      other.userName == userName &&
      other.email == email &&
@@ -37,16 +47,22 @@ class UserInfoDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (userName == null ? 0 : userName!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (claims.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[userId=$userId, userName=$userName, email=$email, claims=$claims]';
+  String toString() => 'UserInfoDto[id=$id, userId=$userId, userName=$userName, email=$email, claims=$claims]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
+    }
     if (this.userId != null) {
       json[r'userId'] = this.userId;
     } else {
@@ -85,6 +101,7 @@ class UserInfoDto {
       }());
 
       return UserInfoDto(
+        id: mapValueOfType<int>(json, r'id'),
         userId: mapValueOfType<String>(json, r'userId'),
         userName: mapValueOfType<String>(json, r'userName'),
         email: mapValueOfType<String>(json, r'email'),
