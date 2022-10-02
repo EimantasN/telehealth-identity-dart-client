@@ -43,6 +43,7 @@ part 'model/logout_cmd.dart';
 part 'model/logout_dto.dart';
 part 'model/register_model.dart';
 part 'model/user_info_dto.dart';
+part 'model/wi_things_refresh_token_cmd.dart';
 part 'model/wi_things_sync_user.dart';
 
 

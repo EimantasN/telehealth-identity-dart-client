@@ -201,6 +201,8 @@ class ApiClient {
           return RegisterModel.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
+        case 'WiThingsRefreshTokenCmd':
+          return WiThingsRefreshTokenCmd.fromJson(value);
         case 'WiThingsSyncUser':
           return WiThingsSyncUser.fromJson(value);
         default:
