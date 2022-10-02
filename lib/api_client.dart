@@ -201,6 +201,8 @@ class ApiClient {
           return RegisterModel.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
+        case 'WiThingsSyncUser':
+          return WiThingsSyncUser.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {
