@@ -16,8 +16,9 @@ class UserInfoDto {
     this.id,
     this.userId,
     this.userName,
+    this.name,
+    this.lastName,
     this.email,
-    this.claims = const [],
   });
 
   ///
@@ -32,17 +33,20 @@ class UserInfoDto {
 
   String? userName;
 
-  String? email;
+  String? name;
 
-  List<ClaimDto> claims;
+  String? lastName;
+
+  String? email;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfoDto &&
      other.id == id &&
      other.userId == userId &&
      other.userName == userName &&
-     other.email == email &&
-     other.claims == claims;
+     other.name == name &&
+     other.lastName == lastName &&
+     other.email == email;
 
   @override
   int get hashCode =>
@@ -50,11 +54,12 @@ class UserInfoDto {
     (id == null ? 0 : id!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (userName == null ? 0 : userName!.hashCode) +
-    (email == null ? 0 : email!.hashCode) +
-    (claims.hashCode);
+    (name == null ? 0 : name!.hashCode) +
+    (lastName == null ? 0 : lastName!.hashCode) +
+    (email == null ? 0 : email!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[id=$id, userId=$userId, userName=$userName, email=$email, claims=$claims]';
+  String toString() => 'UserInfoDto[id=$id, userId=$userId, userName=$userName, name=$name, lastName=$lastName, email=$email]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -73,12 +78,21 @@ class UserInfoDto {
     } else {
       json[r'userName'] = null;
     }
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
+    if (this.lastName != null) {
+      json[r'lastName'] = this.lastName;
+    } else {
+      json[r'lastName'] = null;
+    }
     if (this.email != null) {
       json[r'email'] = this.email;
     } else {
       json[r'email'] = null;
     }
-      json[r'claims'] = this.claims;
     return json;
   }
 
@@ -104,8 +118,9 @@ class UserInfoDto {
         id: mapValueOfType<int>(json, r'id'),
         userId: mapValueOfType<String>(json, r'userId'),
         userName: mapValueOfType<String>(json, r'userName'),
+        name: mapValueOfType<String>(json, r'name'),
+        lastName: mapValueOfType<String>(json, r'lastName'),
         email: mapValueOfType<String>(json, r'email'),
-        claims: ClaimDto.listFromJson(json[r'claims']) ?? const [],
       );
     }
     return null;
