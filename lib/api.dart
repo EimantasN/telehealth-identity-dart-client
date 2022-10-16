@@ -32,6 +32,7 @@ part 'api/claims_api.dart';
 part 'api/identity_api.dart';
 part 'api/user_api.dart';
 part 'api/wi_things_api.dart';
+part 'api/wi_things_callback_api.dart';
 
 part 'model/add_claim_cmd.dart';
 part 'model/add_claim_cmd_claim.dart';
