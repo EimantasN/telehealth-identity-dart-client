@@ -10,11 +10,12 @@
 
 part of openapi.api;
 
-class LoginPersonCmd {
-  /// Returns a new [LoginPersonCmd] instance.
-  LoginPersonCmd({
+class LoginCmd {
+  /// Returns a new [LoginCmd] instance.
+  LoginCmd({
     this.user,
     this.password,
+    this.doctor,
   });
 
   ///
@@ -33,19 +34,29 @@ class LoginPersonCmd {
   ///
   String? password;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? doctor;
+
   @override
-  bool operator ==(Object other) => identical(this, other) || other is LoginPersonCmd &&
+  bool operator ==(Object other) => identical(this, other) || other is LoginCmd &&
      other.user == user &&
-     other.password == password;
+     other.password == password &&
+     other.doctor == doctor;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (user == null ? 0 : user!.hashCode) +
-    (password == null ? 0 : password!.hashCode);
+    (password == null ? 0 : password!.hashCode) +
+    (doctor == null ? 0 : doctor!.hashCode);
 
   @override
-  String toString() => 'LoginPersonCmd[user=$user, password=$password]';
+  String toString() => 'LoginCmd[user=$user, password=$password, doctor=$doctor]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -59,13 +70,18 @@ class LoginPersonCmd {
     } else {
       json[r'password'] = null;
     }
+    if (this.doctor != null) {
+      json[r'doctor'] = this.doctor;
+    } else {
+      json[r'doctor'] = null;
+    }
     return json;
   }
 
-  /// Returns a new [LoginPersonCmd] instance and imports its values from
+  /// Returns a new [LoginCmd] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static LoginPersonCmd? fromJson(dynamic value) {
+  static LoginCmd? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -74,25 +90,26 @@ class LoginPersonCmd {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LoginPersonCmd[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LoginPersonCmd[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "LoginCmd[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "LoginCmd[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return LoginPersonCmd(
+      return LoginCmd(
         user: mapValueOfType<String>(json, r'user'),
         password: mapValueOfType<String>(json, r'password'),
+        doctor: mapValueOfType<bool>(json, r'doctor'),
       );
     }
     return null;
   }
 
-  static List<LoginPersonCmd>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <LoginPersonCmd>[];
+  static List<LoginCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <LoginCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = LoginPersonCmd.fromJson(row);
+        final value = LoginCmd.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -101,12 +118,12 @@ class LoginPersonCmd {
     return result.toList(growable: growable);
   }
 
-  static Map<String, LoginPersonCmd> mapFromJson(dynamic json) {
-    final map = <String, LoginPersonCmd>{};
+  static Map<String, LoginCmd> mapFromJson(dynamic json) {
+    final map = <String, LoginCmd>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = LoginPersonCmd.fromJson(entry.value);
+        final value = LoginCmd.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -115,13 +132,13 @@ class LoginPersonCmd {
     return map;
   }
 
-  // maps a json object with a list of LoginPersonCmd-objects as value to a dart map
-  static Map<String, List<LoginPersonCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<LoginPersonCmd>>{};
+  // maps a json object with a list of LoginCmd-objects as value to a dart map
+  static Map<String, List<LoginCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<LoginCmd>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = LoginPersonCmd.listFromJson(entry.value, growable: growable,);
+        final value = LoginCmd.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

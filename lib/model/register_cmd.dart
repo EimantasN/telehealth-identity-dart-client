@@ -10,21 +10,24 @@
 
 part of openapi.api;
 
-class RegisterPersonCmd {
-  /// Returns a new [RegisterPersonCmd] instance.
-  RegisterPersonCmd({
+class RegisterCmd {
+  /// Returns a new [RegisterCmd] instance.
+  RegisterCmd({
     this.firstName,
     this.lastName,
     this.email,
     this.phoneNumber,
     this.userName,
+    this.specialization,
     this.gender,
     this.password,
     this.street,
     this.postcode,
     this.city,
     this.country,
+    this.doctor,
     this.dateOfBirth,
+    this.isDoctor,
   });
 
   ///
@@ -61,6 +64,14 @@ class RegisterPersonCmd {
   ///
   String? userName;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? specialization;
+
   String? gender;
 
   ///
@@ -79,22 +90,35 @@ class RegisterPersonCmd {
 
   String? country;
 
+  bool? doctor;
+
   DateTime? dateOfBirth;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isDoctor;
+
   @override
-  bool operator ==(Object other) => identical(this, other) || other is RegisterPersonCmd &&
+  bool operator ==(Object other) => identical(this, other) || other is RegisterCmd &&
      other.firstName == firstName &&
      other.lastName == lastName &&
      other.email == email &&
      other.phoneNumber == phoneNumber &&
      other.userName == userName &&
+     other.specialization == specialization &&
      other.gender == gender &&
      other.password == password &&
      other.street == street &&
      other.postcode == postcode &&
      other.city == city &&
      other.country == country &&
-     other.dateOfBirth == dateOfBirth;
+     other.doctor == doctor &&
+     other.dateOfBirth == dateOfBirth &&
+     other.isDoctor == isDoctor;
 
   @override
   int get hashCode =>
@@ -104,16 +128,19 @@ class RegisterPersonCmd {
     (email == null ? 0 : email!.hashCode) +
     (phoneNumber == null ? 0 : phoneNumber!.hashCode) +
     (userName == null ? 0 : userName!.hashCode) +
+    (specialization == null ? 0 : specialization!.hashCode) +
     (gender == null ? 0 : gender!.hashCode) +
     (password == null ? 0 : password!.hashCode) +
     (street == null ? 0 : street!.hashCode) +
     (postcode == null ? 0 : postcode!.hashCode) +
     (city == null ? 0 : city!.hashCode) +
     (country == null ? 0 : country!.hashCode) +
-    (dateOfBirth == null ? 0 : dateOfBirth!.hashCode);
+    (doctor == null ? 0 : doctor!.hashCode) +
+    (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
+    (isDoctor == null ? 0 : isDoctor!.hashCode);
 
   @override
-  String toString() => 'RegisterPersonCmd[firstName=$firstName, lastName=$lastName, email=$email, phoneNumber=$phoneNumber, userName=$userName, gender=$gender, password=$password, street=$street, postcode=$postcode, city=$city, country=$country, dateOfBirth=$dateOfBirth]';
+  String toString() => 'RegisterCmd[firstName=$firstName, lastName=$lastName, email=$email, phoneNumber=$phoneNumber, userName=$userName, specialization=$specialization, gender=$gender, password=$password, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, dateOfBirth=$dateOfBirth, isDoctor=$isDoctor]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -141,6 +168,11 @@ class RegisterPersonCmd {
       json[r'userName'] = this.userName;
     } else {
       json[r'userName'] = null;
+    }
+    if (this.specialization != null) {
+      json[r'specialization'] = this.specialization;
+    } else {
+      json[r'specialization'] = null;
     }
     if (this.gender != null) {
       json[r'gender'] = this.gender;
@@ -172,18 +204,28 @@ class RegisterPersonCmd {
     } else {
       json[r'country'] = null;
     }
+    if (this.doctor != null) {
+      json[r'doctor'] = this.doctor;
+    } else {
+      json[r'doctor'] = null;
+    }
     if (this.dateOfBirth != null) {
       json[r'dateOfBirth'] = this.dateOfBirth!.toUtc().toIso8601String();
     } else {
       json[r'dateOfBirth'] = null;
     }
+    if (this.isDoctor != null) {
+      json[r'isDoctor'] = this.isDoctor;
+    } else {
+      json[r'isDoctor'] = null;
+    }
     return json;
   }
 
-  /// Returns a new [RegisterPersonCmd] instance and imports its values from
+  /// Returns a new [RegisterCmd] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static RegisterPersonCmd? fromJson(dynamic value) {
+  static RegisterCmd? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -192,35 +234,38 @@ class RegisterPersonCmd {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "RegisterPersonCmd[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "RegisterPersonCmd[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "RegisterCmd[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "RegisterCmd[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return RegisterPersonCmd(
+      return RegisterCmd(
         firstName: mapValueOfType<String>(json, r'firstName'),
         lastName: mapValueOfType<String>(json, r'lastName'),
         email: mapValueOfType<String>(json, r'email'),
         phoneNumber: mapValueOfType<String>(json, r'phoneNumber'),
         userName: mapValueOfType<String>(json, r'userName'),
+        specialization: mapValueOfType<String>(json, r'specialization'),
         gender: mapValueOfType<String>(json, r'gender'),
         password: mapValueOfType<String>(json, r'password'),
         street: mapValueOfType<String>(json, r'street'),
         postcode: mapValueOfType<String>(json, r'postcode'),
         city: mapValueOfType<String>(json, r'city'),
         country: mapValueOfType<String>(json, r'country'),
+        doctor: mapValueOfType<bool>(json, r'doctor'),
         dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
+        isDoctor: mapValueOfType<bool>(json, r'isDoctor'),
       );
     }
     return null;
   }
 
-  static List<RegisterPersonCmd>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <RegisterPersonCmd>[];
+  static List<RegisterCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <RegisterCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = RegisterPersonCmd.fromJson(row);
+        final value = RegisterCmd.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -229,12 +274,12 @@ class RegisterPersonCmd {
     return result.toList(growable: growable);
   }
 
-  static Map<String, RegisterPersonCmd> mapFromJson(dynamic json) {
-    final map = <String, RegisterPersonCmd>{};
+  static Map<String, RegisterCmd> mapFromJson(dynamic json) {
+    final map = <String, RegisterCmd>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = RegisterPersonCmd.fromJson(entry.value);
+        final value = RegisterCmd.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -243,13 +288,13 @@ class RegisterPersonCmd {
     return map;
   }
 
-  // maps a json object with a list of RegisterPersonCmd-objects as value to a dart map
-  static Map<String, List<RegisterPersonCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<RegisterPersonCmd>>{};
+  // maps a json object with a list of RegisterCmd-objects as value to a dart map
+  static Map<String, List<RegisterCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<RegisterCmd>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = RegisterPersonCmd.listFromJson(entry.value, growable: growable,);
+        final value = RegisterCmd.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

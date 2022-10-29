@@ -19,13 +19,13 @@ class AccountApi {
   /// Performs an HTTP 'POST /api/Account/Login' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [LoginPersonCmd] loginPersonCmd (required):
-  Future<Response> accountLoginWithHttpInfo(LoginPersonCmd loginPersonCmd,) async {
+  /// * [LoginCmd] loginCmd (required):
+  Future<Response> accountLoginWithHttpInfo(LoginCmd loginCmd,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Account/Login';
 
     // ignore: prefer_final_locals
-    Object? postBody = loginPersonCmd;
+    Object? postBody = loginCmd;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -47,9 +47,9 @@ class AccountApi {
 
   /// Parameters:
   ///
-  /// * [LoginPersonCmd] loginPersonCmd (required):
-  Future<LoginResultDto?> accountLogin(LoginPersonCmd loginPersonCmd,) async {
-    final response = await accountLoginWithHttpInfo(loginPersonCmd,);
+  /// * [LoginCmd] loginCmd (required):
+  Future<LoginResultDto?> accountLogin(LoginCmd loginCmd,) async {
+    final response = await accountLoginWithHttpInfo(loginCmd,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -66,13 +66,13 @@ class AccountApi {
   /// Performs an HTTP 'POST /api/Account/RegisterPersonal' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [RegisterPersonCmd] registerPersonCmd (required):
-  Future<Response> accountRegisterPersonalWithHttpInfo(RegisterPersonCmd registerPersonCmd,) async {
+  /// * [RegisterCmd] registerCmd (required):
+  Future<Response> accountRegisterPersonalWithHttpInfo(RegisterCmd registerCmd,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Account/RegisterPersonal';
 
     // ignore: prefer_final_locals
-    Object? postBody = registerPersonCmd;
+    Object? postBody = registerCmd;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -94,9 +94,9 @@ class AccountApi {
 
   /// Parameters:
   ///
-  /// * [RegisterPersonCmd] registerPersonCmd (required):
-  Future<bool?> accountRegisterPersonal(RegisterPersonCmd registerPersonCmd,) async {
-    final response = await accountRegisterPersonalWithHttpInfo(registerPersonCmd,);
+  /// * [RegisterCmd] registerCmd (required):
+  Future<bool?> accountRegisterPersonal(RegisterCmd registerCmd,) async {
+    final response = await accountRegisterPersonalWithHttpInfo(registerCmd,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

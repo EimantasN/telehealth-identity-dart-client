@@ -191,20 +191,20 @@ class ApiClient {
           return ClaimDto.fromJson(value);
         case 'IIdentity':
           return IIdentity.fromJson(value);
+        case 'LoginCmd':
+          return LoginCmd.fromJson(value);
         case 'LoginModel':
           return LoginModel.fromJson(value);
-        case 'LoginPersonCmd':
-          return LoginPersonCmd.fromJson(value);
         case 'LoginResultDto':
           return LoginResultDto.fromJson(value);
         case 'LogoutCmd':
           return LogoutCmd.fromJson(value);
         case 'LogoutDto':
           return LogoutDto.fromJson(value);
+        case 'RegisterCmd':
+          return RegisterCmd.fromJson(value);
         case 'RegisterModel':
           return RegisterModel.fromJson(value);
-        case 'RegisterPersonCmd':
-          return RegisterPersonCmd.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
         case 'WiThingsRefreshTokenCmd':
