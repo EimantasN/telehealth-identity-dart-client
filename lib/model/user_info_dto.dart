@@ -19,6 +19,7 @@ class UserInfoDto {
     this.name,
     this.lastName,
     this.email,
+    this.doctor,
   });
 
   ///
@@ -39,6 +40,14 @@ class UserInfoDto {
 
   String? email;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? doctor;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfoDto &&
      other.id == id &&
@@ -46,7 +55,8 @@ class UserInfoDto {
      other.userName == userName &&
      other.name == name &&
      other.lastName == lastName &&
-     other.email == email;
+     other.email == email &&
+     other.doctor == doctor;
 
   @override
   int get hashCode =>
@@ -56,10 +66,11 @@ class UserInfoDto {
     (userName == null ? 0 : userName!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (lastName == null ? 0 : lastName!.hashCode) +
-    (email == null ? 0 : email!.hashCode);
+    (email == null ? 0 : email!.hashCode) +
+    (doctor == null ? 0 : doctor!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[id=$id, userId=$userId, userName=$userName, name=$name, lastName=$lastName, email=$email]';
+  String toString() => 'UserInfoDto[id=$id, userId=$userId, userName=$userName, name=$name, lastName=$lastName, email=$email, doctor=$doctor]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -93,6 +104,11 @@ class UserInfoDto {
     } else {
       json[r'email'] = null;
     }
+    if (this.doctor != null) {
+      json[r'doctor'] = this.doctor;
+    } else {
+      json[r'doctor'] = null;
+    }
     return json;
   }
 
@@ -121,6 +137,7 @@ class UserInfoDto {
         name: mapValueOfType<String>(json, r'name'),
         lastName: mapValueOfType<String>(json, r'lastName'),
         email: mapValueOfType<String>(json, r'email'),
+        doctor: mapValueOfType<bool>(json, r'doctor'),
       );
     }
     return null;
