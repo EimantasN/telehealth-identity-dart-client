@@ -187,6 +187,8 @@ class ApiClient {
           return AddClaimCmdClaim.fromJson(value);
         case 'AddClaimOptionCmd':
           return AddClaimOptionCmd.fromJson(value);
+        case 'ChangePasswordCmd':
+          return ChangePasswordCmd.fromJson(value);
         case 'ClaimDto':
           return ClaimDto.fromJson(value);
         case 'IIdentity':
@@ -205,6 +207,10 @@ class ApiClient {
           return RegisterCmd.fromJson(value);
         case 'RegisterModel':
           return RegisterModel.fromJson(value);
+        case 'ResetPasswordCmd':
+          return ResetPasswordCmd.fromJson(value);
+        case 'ResetPasswordDto':
+          return ResetPasswordDto.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
         case 'WiThingsRefreshTokenCmd':
