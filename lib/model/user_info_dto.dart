@@ -16,10 +16,18 @@ class UserInfoDto {
     this.id,
     this.userId,
     this.userName,
-    this.name,
-    this.lastName,
     this.email,
+    this.firstName,
+    this.lastName,
+    this.phoneNumber,
+    this.gender,
+    this.street,
+    this.postcode,
+    this.city,
+    this.country,
     this.doctor,
+    this.specialization,
+    this.dateOfBirth,
   });
 
   ///
@@ -34,11 +42,23 @@ class UserInfoDto {
 
   String? userName;
 
-  String? name;
+  String? email;
+
+  String? firstName;
 
   String? lastName;
 
-  String? email;
+  String? phoneNumber;
+
+  String? gender;
+
+  String? street;
+
+  String? postcode;
+
+  String? city;
+
+  String? country;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -48,15 +68,27 @@ class UserInfoDto {
   ///
   bool? doctor;
 
+  String? specialization;
+
+  DateTime? dateOfBirth;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfoDto &&
      other.id == id &&
      other.userId == userId &&
      other.userName == userName &&
-     other.name == name &&
-     other.lastName == lastName &&
      other.email == email &&
-     other.doctor == doctor;
+     other.firstName == firstName &&
+     other.lastName == lastName &&
+     other.phoneNumber == phoneNumber &&
+     other.gender == gender &&
+     other.street == street &&
+     other.postcode == postcode &&
+     other.city == city &&
+     other.country == country &&
+     other.doctor == doctor &&
+     other.specialization == specialization &&
+     other.dateOfBirth == dateOfBirth;
 
   @override
   int get hashCode =>
@@ -64,13 +96,21 @@ class UserInfoDto {
     (id == null ? 0 : id!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (userName == null ? 0 : userName!.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
-    (lastName == null ? 0 : lastName!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
-    (doctor == null ? 0 : doctor!.hashCode);
+    (firstName == null ? 0 : firstName!.hashCode) +
+    (lastName == null ? 0 : lastName!.hashCode) +
+    (phoneNumber == null ? 0 : phoneNumber!.hashCode) +
+    (gender == null ? 0 : gender!.hashCode) +
+    (street == null ? 0 : street!.hashCode) +
+    (postcode == null ? 0 : postcode!.hashCode) +
+    (city == null ? 0 : city!.hashCode) +
+    (country == null ? 0 : country!.hashCode) +
+    (doctor == null ? 0 : doctor!.hashCode) +
+    (specialization == null ? 0 : specialization!.hashCode) +
+    (dateOfBirth == null ? 0 : dateOfBirth!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[id=$id, userId=$userId, userName=$userName, name=$name, lastName=$lastName, email=$email, doctor=$doctor]';
+  String toString() => 'UserInfoDto[id=$id, userId=$userId, userName=$userName, email=$email, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, specialization=$specialization, dateOfBirth=$dateOfBirth]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -89,25 +129,65 @@ class UserInfoDto {
     } else {
       json[r'userName'] = null;
     }
-    if (this.name != null) {
-      json[r'name'] = this.name;
+    if (this.email != null) {
+      json[r'email'] = this.email;
     } else {
-      json[r'name'] = null;
+      json[r'email'] = null;
+    }
+    if (this.firstName != null) {
+      json[r'firstName'] = this.firstName;
+    } else {
+      json[r'firstName'] = null;
     }
     if (this.lastName != null) {
       json[r'lastName'] = this.lastName;
     } else {
       json[r'lastName'] = null;
     }
-    if (this.email != null) {
-      json[r'email'] = this.email;
+    if (this.phoneNumber != null) {
+      json[r'phoneNumber'] = this.phoneNumber;
     } else {
-      json[r'email'] = null;
+      json[r'phoneNumber'] = null;
+    }
+    if (this.gender != null) {
+      json[r'gender'] = this.gender;
+    } else {
+      json[r'gender'] = null;
+    }
+    if (this.street != null) {
+      json[r'street'] = this.street;
+    } else {
+      json[r'street'] = null;
+    }
+    if (this.postcode != null) {
+      json[r'postcode'] = this.postcode;
+    } else {
+      json[r'postcode'] = null;
+    }
+    if (this.city != null) {
+      json[r'city'] = this.city;
+    } else {
+      json[r'city'] = null;
+    }
+    if (this.country != null) {
+      json[r'country'] = this.country;
+    } else {
+      json[r'country'] = null;
     }
     if (this.doctor != null) {
       json[r'doctor'] = this.doctor;
     } else {
       json[r'doctor'] = null;
+    }
+    if (this.specialization != null) {
+      json[r'specialization'] = this.specialization;
+    } else {
+      json[r'specialization'] = null;
+    }
+    if (this.dateOfBirth != null) {
+      json[r'dateOfBirth'] = this.dateOfBirth!.toUtc().toIso8601String();
+    } else {
+      json[r'dateOfBirth'] = null;
     }
     return json;
   }
@@ -134,10 +214,18 @@ class UserInfoDto {
         id: mapValueOfType<int>(json, r'id'),
         userId: mapValueOfType<String>(json, r'userId'),
         userName: mapValueOfType<String>(json, r'userName'),
-        name: mapValueOfType<String>(json, r'name'),
-        lastName: mapValueOfType<String>(json, r'lastName'),
         email: mapValueOfType<String>(json, r'email'),
+        firstName: mapValueOfType<String>(json, r'firstName'),
+        lastName: mapValueOfType<String>(json, r'lastName'),
+        phoneNumber: mapValueOfType<String>(json, r'phoneNumber'),
+        gender: mapValueOfType<String>(json, r'gender'),
+        street: mapValueOfType<String>(json, r'street'),
+        postcode: mapValueOfType<String>(json, r'postcode'),
+        city: mapValueOfType<String>(json, r'city'),
+        country: mapValueOfType<String>(json, r'country'),
         doctor: mapValueOfType<bool>(json, r'doctor'),
+        specialization: mapValueOfType<String>(json, r'specialization'),
+        dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
       );
     }
     return null;
