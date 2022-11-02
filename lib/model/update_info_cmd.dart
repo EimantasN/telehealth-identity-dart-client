@@ -18,7 +18,6 @@ class UpdateInfoCmd {
     this.phoneNumber,
     this.specialization,
     this.gender,
-    this.password,
     this.street,
     this.postcode,
     this.city,
@@ -44,23 +43,9 @@ class UpdateInfoCmd {
 
   String? phoneNumber;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? specialization;
 
   String? gender;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? password;
 
   String? street;
 
@@ -79,7 +64,6 @@ class UpdateInfoCmd {
      other.phoneNumber == phoneNumber &&
      other.specialization == specialization &&
      other.gender == gender &&
-     other.password == password &&
      other.street == street &&
      other.postcode == postcode &&
      other.city == city &&
@@ -94,7 +78,6 @@ class UpdateInfoCmd {
     (phoneNumber == null ? 0 : phoneNumber!.hashCode) +
     (specialization == null ? 0 : specialization!.hashCode) +
     (gender == null ? 0 : gender!.hashCode) +
-    (password == null ? 0 : password!.hashCode) +
     (street == null ? 0 : street!.hashCode) +
     (postcode == null ? 0 : postcode!.hashCode) +
     (city == null ? 0 : city!.hashCode) +
@@ -102,7 +85,7 @@ class UpdateInfoCmd {
     (dateOfBirth == null ? 0 : dateOfBirth!.hashCode);
 
   @override
-  String toString() => 'UpdateInfoCmd[firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, specialization=$specialization, gender=$gender, password=$password, street=$street, postcode=$postcode, city=$city, country=$country, dateOfBirth=$dateOfBirth]';
+  String toString() => 'UpdateInfoCmd[firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, specialization=$specialization, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, dateOfBirth=$dateOfBirth]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -130,11 +113,6 @@ class UpdateInfoCmd {
       json[r'gender'] = this.gender;
     } else {
       json[r'gender'] = null;
-    }
-    if (this.password != null) {
-      json[r'password'] = this.password;
-    } else {
-      json[r'password'] = null;
     }
     if (this.street != null) {
       json[r'street'] = this.street;
@@ -188,7 +166,6 @@ class UpdateInfoCmd {
         phoneNumber: mapValueOfType<String>(json, r'phoneNumber'),
         specialization: mapValueOfType<String>(json, r'specialization'),
         gender: mapValueOfType<String>(json, r'gender'),
-        password: mapValueOfType<String>(json, r'password'),
         street: mapValueOfType<String>(json, r'street'),
         postcode: mapValueOfType<String>(json, r'postcode'),
         city: mapValueOfType<String>(json, r'city'),
