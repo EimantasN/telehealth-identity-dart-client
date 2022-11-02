@@ -50,6 +50,7 @@ part 'model/register_cmd.dart';
 part 'model/register_model.dart';
 part 'model/reset_password_cmd.dart';
 part 'model/reset_password_dto.dart';
+part 'model/update_info_cmd.dart';
 part 'model/user_info_dto.dart';
 part 'model/wi_things_refresh_token_cmd.dart';
 part 'model/wi_things_sync_user.dart';

@@ -63,13 +63,13 @@ class AccountApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /api/Account/RegisterPersonal' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/Account/Register' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [RegisterCmd] registerCmd (required):
-  Future<Response> accountRegisterPersonalWithHttpInfo(RegisterCmd registerCmd,) async {
+  Future<Response> accountRegisterWithHttpInfo(RegisterCmd registerCmd,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/Account/RegisterPersonal';
+    final path = r'/api/Account/Register';
 
     // ignore: prefer_final_locals
     Object? postBody = registerCmd;
@@ -95,8 +95,8 @@ class AccountApi {
   /// Parameters:
   ///
   /// * [RegisterCmd] registerCmd (required):
-  Future<bool?> accountRegisterPersonal(RegisterCmd registerCmd,) async {
-    final response = await accountRegisterPersonalWithHttpInfo(registerCmd,);
+  Future<bool?> accountRegister(RegisterCmd registerCmd,) async {
+    final response = await accountRegisterWithHttpInfo(registerCmd,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -199,6 +199,53 @@ class AccountApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ResetPasswordDto',) as ResetPasswordDto;
+    
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /api/Account/Update' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [UpdateInfoCmd] updateInfoCmd (required):
+  Future<Response> accountUpdateWithHttpInfo(UpdateInfoCmd updateInfoCmd,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Account/Update';
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateInfoCmd;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [UpdateInfoCmd] updateInfoCmd (required):
+  Future<bool?> accountUpdate(UpdateInfoCmd updateInfoCmd,) async {
+    final response = await accountUpdateWithHttpInfo(updateInfoCmd,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
     
     }
     return null;

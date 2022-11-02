@@ -211,6 +211,8 @@ class ApiClient {
           return ResetPasswordCmd.fromJson(value);
         case 'ResetPasswordDto':
           return ResetPasswordDto.fromJson(value);
+        case 'UpdateInfoCmd':
+          return UpdateInfoCmd.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
         case 'WiThingsRefreshTokenCmd':
