@@ -57,64 +57,6 @@ class WiThingsApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /api/WiThings/Callback' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [String] code:
-  ///
-  /// * [String] state:
-  Future<Response> wiThingsCallbackWithHttpInfo({ String? code, String? state, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/WiThings/Callback';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    if (code != null) {
-      queryParams.addAll(_queryParams('', 'code', code));
-    }
-    if (state != null) {
-      queryParams.addAll(_queryParams('', 'state', state));
-    }
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [String] code:
-  ///
-  /// * [String] state:
-  Future<bool?> wiThingsCallback({ String? code, String? state, }) async {
-    final response = await wiThingsCallbackWithHttpInfo( code: code, state: state, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
-    
-    }
-    return null;
-  }
-
   /// Performs an HTTP 'GET /api/WiThings/SyncUsers' operation and returns the [Response].
   Future<Response> wiThingsSyncUsersWithHttpInfo() async {
     // ignore: prefer_const_declarations
