@@ -191,6 +191,10 @@ class ApiClient {
           return ChangePasswordCmd.fromJson(value);
         case 'ClaimDto':
           return ClaimDto.fromJson(value);
+        case 'DoctorSearchDto':
+          return DoctorSearchDto.fromJson(value);
+        case 'DoctorSearchQuery':
+          return DoctorSearchQuery.fromJson(value);
         case 'IIdentity':
           return IIdentity.fromJson(value);
         case 'LoginCmd':
