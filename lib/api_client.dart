@@ -193,8 +193,12 @@ class ApiClient {
           return ClaimDto.fromJson(value);
         case 'DoctorSearchDto':
           return DoctorSearchDto.fromJson(value);
+        case 'DoctorSearchDtoAllOf':
+          return DoctorSearchDtoAllOf.fromJson(value);
         case 'DoctorSearchQuery':
           return DoctorSearchQuery.fromJson(value);
+        case 'GetInfoQuery':
+          return GetInfoQuery.fromJson(value);
         case 'IIdentity':
           return IIdentity.fromJson(value);
         case 'LoginCmd':
@@ -207,6 +211,12 @@ class ApiClient {
           return LogoutCmd.fromJson(value);
         case 'LogoutDto':
           return LogoutDto.fromJson(value);
+        case 'PatientSearchDto':
+          return PatientSearchDto.fromJson(value);
+        case 'PatientSearchDtoAllOf':
+          return PatientSearchDtoAllOf.fromJson(value);
+        case 'PatientSearchQuery':
+          return PatientSearchQuery.fromJson(value);
         case 'RegisterCmd':
           return RegisterCmd.fromJson(value);
         case 'RegisterModel':
@@ -219,6 +229,8 @@ class ApiClient {
           return UpdateInfoCmd.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
+        case 'UserListItemDto':
+          return UserListItemDto.fromJson(value);
         case 'WiThingsRefreshTokenCmd':
           return WiThingsRefreshTokenCmd.fromJson(value);
         case 'WiThingsSyncUser':

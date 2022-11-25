@@ -10,15 +10,14 @@
 
 part of openapi.api;
 
-class DoctorSearchDto {
-  /// Returns a new [DoctorSearchDto] instance.
-  DoctorSearchDto({
+class PatientSearchDto {
+  /// Returns a new [PatientSearchDto] instance.
+  PatientSearchDto({
     this.firstName,
     this.lastName,
     this.imageBase64,
     this.city,
     this.country,
-    this.specialization,
   });
 
   ///
@@ -55,22 +54,13 @@ class DoctorSearchDto {
   ///
   String? country;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? specialization;
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is DoctorSearchDto &&
+  bool operator ==(Object other) => identical(this, other) || other is PatientSearchDto &&
      other.firstName == firstName &&
      other.lastName == lastName &&
      other.imageBase64 == imageBase64 &&
      other.city == city &&
-     other.country == country &&
-     other.specialization == specialization;
+     other.country == country;
 
   @override
   int get hashCode =>
@@ -79,11 +69,10 @@ class DoctorSearchDto {
     (lastName == null ? 0 : lastName!.hashCode) +
     (imageBase64 == null ? 0 : imageBase64!.hashCode) +
     (city == null ? 0 : city!.hashCode) +
-    (country == null ? 0 : country!.hashCode) +
-    (specialization == null ? 0 : specialization!.hashCode);
+    (country == null ? 0 : country!.hashCode);
 
   @override
-  String toString() => 'DoctorSearchDto[firstName=$firstName, lastName=$lastName, imageBase64=$imageBase64, city=$city, country=$country, specialization=$specialization]';
+  String toString() => 'PatientSearchDto[firstName=$firstName, lastName=$lastName, imageBase64=$imageBase64, city=$city, country=$country]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -112,18 +101,13 @@ class DoctorSearchDto {
     } else {
       json[r'country'] = null;
     }
-    if (this.specialization != null) {
-      json[r'specialization'] = this.specialization;
-    } else {
-      json[r'specialization'] = null;
-    }
     return json;
   }
 
-  /// Returns a new [DoctorSearchDto] instance and imports its values from
+  /// Returns a new [PatientSearchDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static DoctorSearchDto? fromJson(dynamic value) {
+  static PatientSearchDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -132,29 +116,28 @@ class DoctorSearchDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "DoctorSearchDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "DoctorSearchDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PatientSearchDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PatientSearchDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return DoctorSearchDto(
+      return PatientSearchDto(
         firstName: mapValueOfType<String>(json, r'firstName'),
         lastName: mapValueOfType<String>(json, r'lastName'),
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
         city: mapValueOfType<String>(json, r'city'),
         country: mapValueOfType<String>(json, r'country'),
-        specialization: mapValueOfType<String>(json, r'specialization'),
       );
     }
     return null;
   }
 
-  static List<DoctorSearchDto>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <DoctorSearchDto>[];
+  static List<PatientSearchDto>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PatientSearchDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = DoctorSearchDto.fromJson(row);
+        final value = PatientSearchDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -163,12 +146,12 @@ class DoctorSearchDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, DoctorSearchDto> mapFromJson(dynamic json) {
-    final map = <String, DoctorSearchDto>{};
+  static Map<String, PatientSearchDto> mapFromJson(dynamic json) {
+    final map = <String, PatientSearchDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = DoctorSearchDto.fromJson(entry.value);
+        final value = PatientSearchDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -177,13 +160,13 @@ class DoctorSearchDto {
     return map;
   }
 
-  // maps a json object with a list of DoctorSearchDto-objects as value to a dart map
-  static Map<String, List<DoctorSearchDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<DoctorSearchDto>>{};
+  // maps a json object with a list of PatientSearchDto-objects as value to a dart map
+  static Map<String, List<PatientSearchDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PatientSearchDto>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = DoctorSearchDto.listFromJson(entry.value, growable: growable,);
+        final value = PatientSearchDto.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }
