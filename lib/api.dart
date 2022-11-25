@@ -42,7 +42,6 @@ part 'model/add_claim_option_cmd.dart';
 part 'model/change_password_cmd.dart';
 part 'model/claim_dto.dart';
 part 'model/doctor_search_dto.dart';
-part 'model/doctor_search_dto_all_of.dart';
 part 'model/doctor_search_query.dart';
 part 'model/get_info_query.dart';
 part 'model/i_identity.dart';

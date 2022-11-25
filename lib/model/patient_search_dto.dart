@@ -15,6 +15,7 @@ class PatientSearchDto {
   PatientSearchDto({
     this.firstName,
     this.lastName,
+    this.specialization,
     this.imageBase64,
     this.city,
     this.country,
@@ -35,6 +36,8 @@ class PatientSearchDto {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? lastName;
+
+  String? specialization;
 
   String? imageBase64;
 
@@ -58,6 +61,7 @@ class PatientSearchDto {
   bool operator ==(Object other) => identical(this, other) || other is PatientSearchDto &&
      other.firstName == firstName &&
      other.lastName == lastName &&
+     other.specialization == specialization &&
      other.imageBase64 == imageBase64 &&
      other.city == city &&
      other.country == country;
@@ -67,12 +71,13 @@ class PatientSearchDto {
     // ignore: unnecessary_parenthesis
     (firstName == null ? 0 : firstName!.hashCode) +
     (lastName == null ? 0 : lastName!.hashCode) +
+    (specialization == null ? 0 : specialization!.hashCode) +
     (imageBase64 == null ? 0 : imageBase64!.hashCode) +
     (city == null ? 0 : city!.hashCode) +
     (country == null ? 0 : country!.hashCode);
 
   @override
-  String toString() => 'PatientSearchDto[firstName=$firstName, lastName=$lastName, imageBase64=$imageBase64, city=$city, country=$country]';
+  String toString() => 'PatientSearchDto[firstName=$firstName, lastName=$lastName, specialization=$specialization, imageBase64=$imageBase64, city=$city, country=$country]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -85,6 +90,11 @@ class PatientSearchDto {
       json[r'lastName'] = this.lastName;
     } else {
       json[r'lastName'] = null;
+    }
+    if (this.specialization != null) {
+      json[r'specialization'] = this.specialization;
+    } else {
+      json[r'specialization'] = null;
     }
     if (this.imageBase64 != null) {
       json[r'imageBase64'] = this.imageBase64;
@@ -125,6 +135,7 @@ class PatientSearchDto {
       return PatientSearchDto(
         firstName: mapValueOfType<String>(json, r'firstName'),
         lastName: mapValueOfType<String>(json, r'lastName'),
+        specialization: mapValueOfType<String>(json, r'specialization'),
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
         city: mapValueOfType<String>(json, r'city'),
         country: mapValueOfType<String>(json, r'country'),

@@ -15,6 +15,7 @@ class UserListItemDto {
   UserListItemDto({
     this.firstName,
     this.lastName,
+    this.specialization,
     this.imageBase64,
   });
 
@@ -34,12 +35,15 @@ class UserListItemDto {
   ///
   String? lastName;
 
+  String? specialization;
+
   String? imageBase64;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserListItemDto &&
      other.firstName == firstName &&
      other.lastName == lastName &&
+     other.specialization == specialization &&
      other.imageBase64 == imageBase64;
 
   @override
@@ -47,10 +51,11 @@ class UserListItemDto {
     // ignore: unnecessary_parenthesis
     (firstName == null ? 0 : firstName!.hashCode) +
     (lastName == null ? 0 : lastName!.hashCode) +
+    (specialization == null ? 0 : specialization!.hashCode) +
     (imageBase64 == null ? 0 : imageBase64!.hashCode);
 
   @override
-  String toString() => 'UserListItemDto[firstName=$firstName, lastName=$lastName, imageBase64=$imageBase64]';
+  String toString() => 'UserListItemDto[firstName=$firstName, lastName=$lastName, specialization=$specialization, imageBase64=$imageBase64]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -63,6 +68,11 @@ class UserListItemDto {
       json[r'lastName'] = this.lastName;
     } else {
       json[r'lastName'] = null;
+    }
+    if (this.specialization != null) {
+      json[r'specialization'] = this.specialization;
+    } else {
+      json[r'specialization'] = null;
     }
     if (this.imageBase64 != null) {
       json[r'imageBase64'] = this.imageBase64;
@@ -93,6 +103,7 @@ class UserListItemDto {
       return UserListItemDto(
         firstName: mapValueOfType<String>(json, r'firstName'),
         lastName: mapValueOfType<String>(json, r'lastName'),
+        specialization: mapValueOfType<String>(json, r'specialization'),
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
       );
     }

@@ -193,8 +193,6 @@ class ApiClient {
           return ClaimDto.fromJson(value);
         case 'DoctorSearchDto':
           return DoctorSearchDto.fromJson(value);
-        case 'DoctorSearchDtoAllOf':
-          return DoctorSearchDtoAllOf.fromJson(value);
         case 'DoctorSearchQuery':
           return DoctorSearchQuery.fromJson(value);
         case 'GetInfoQuery':
