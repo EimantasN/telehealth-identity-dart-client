@@ -18,6 +18,7 @@ class RegisterCmd {
     this.email,
     this.userName,
     this.password,
+    this.doctor,
   });
 
   ///
@@ -60,13 +61,22 @@ class RegisterCmd {
   ///
   String? password;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? doctor;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is RegisterCmd &&
      other.firstName == firstName &&
      other.lastName == lastName &&
      other.email == email &&
      other.userName == userName &&
-     other.password == password;
+     other.password == password &&
+     other.doctor == doctor;
 
   @override
   int get hashCode =>
@@ -75,10 +85,11 @@ class RegisterCmd {
     (lastName == null ? 0 : lastName!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (userName == null ? 0 : userName!.hashCode) +
-    (password == null ? 0 : password!.hashCode);
+    (password == null ? 0 : password!.hashCode) +
+    (doctor == null ? 0 : doctor!.hashCode);
 
   @override
-  String toString() => 'RegisterCmd[firstName=$firstName, lastName=$lastName, email=$email, userName=$userName, password=$password]';
+  String toString() => 'RegisterCmd[firstName=$firstName, lastName=$lastName, email=$email, userName=$userName, password=$password, doctor=$doctor]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -107,6 +118,11 @@ class RegisterCmd {
     } else {
       json[r'password'] = null;
     }
+    if (this.doctor != null) {
+      json[r'doctor'] = this.doctor;
+    } else {
+      json[r'doctor'] = null;
+    }
     return json;
   }
 
@@ -134,6 +150,7 @@ class RegisterCmd {
         email: mapValueOfType<String>(json, r'email'),
         userName: mapValueOfType<String>(json, r'userName'),
         password: mapValueOfType<String>(json, r'password'),
+        doctor: mapValueOfType<bool>(json, r'doctor'),
       );
     }
     return null;
