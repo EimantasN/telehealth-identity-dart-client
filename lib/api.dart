@@ -48,6 +48,8 @@ part 'model/logout_cmd.dart';
 part 'model/logout_dto.dart';
 part 'model/register_cmd.dart';
 part 'model/register_model.dart';
+part 'model/register_result_dto.dart';
+part 'model/register_result_dto_all_of.dart';
 part 'model/reset_password_cmd.dart';
 part 'model/reset_password_dto.dart';
 part 'model/user_info_dto.dart';
