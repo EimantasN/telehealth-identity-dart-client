@@ -15,7 +15,6 @@ class LoginCmd {
   LoginCmd({
     this.user,
     this.password,
-    this.doctor,
   });
 
   ///
@@ -34,29 +33,19 @@ class LoginCmd {
   ///
   String? password;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? doctor;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginCmd &&
      other.user == user &&
-     other.password == password &&
-     other.doctor == doctor;
+     other.password == password;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (user == null ? 0 : user!.hashCode) +
-    (password == null ? 0 : password!.hashCode) +
-    (doctor == null ? 0 : doctor!.hashCode);
+    (password == null ? 0 : password!.hashCode);
 
   @override
-  String toString() => 'LoginCmd[user=$user, password=$password, doctor=$doctor]';
+  String toString() => 'LoginCmd[user=$user, password=$password]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -69,11 +58,6 @@ class LoginCmd {
       json[r'password'] = this.password;
     } else {
       json[r'password'] = null;
-    }
-    if (this.doctor != null) {
-      json[r'doctor'] = this.doctor;
-    } else {
-      json[r'doctor'] = null;
     }
     return json;
   }
@@ -99,7 +83,6 @@ class LoginCmd {
       return LoginCmd(
         user: mapValueOfType<String>(json, r'user'),
         password: mapValueOfType<String>(json, r'password'),
-        doctor: mapValueOfType<bool>(json, r'doctor'),
       );
     }
     return null;
