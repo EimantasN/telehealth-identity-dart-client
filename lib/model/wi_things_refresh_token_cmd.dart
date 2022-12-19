@@ -22,7 +22,7 @@ class WiThingsRefreshTokenCmd {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? userId;
+  String? userId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is WiThingsRefreshTokenCmd &&
@@ -65,7 +65,7 @@ class WiThingsRefreshTokenCmd {
       }());
 
       return WiThingsRefreshTokenCmd(
-        userId: mapValueOfType<int>(json, r'userId'),
+        userId: mapValueOfType<String>(json, r'userId'),
       );
     }
     return null;
