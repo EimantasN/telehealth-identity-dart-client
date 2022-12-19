@@ -13,7 +13,7 @@ part of openapi.api;
 class WiThingsSyncUser {
   /// Returns a new [WiThingsSyncUser] instance.
   WiThingsSyncUser({
-    this.userInfoId,
+    this.userId,
   });
 
   ///
@@ -22,26 +22,26 @@ class WiThingsSyncUser {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? userInfoId;
+  String? userId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is WiThingsSyncUser &&
-     other.userInfoId == userInfoId;
+     other.userId == userId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (userInfoId == null ? 0 : userInfoId!.hashCode);
+    (userId == null ? 0 : userId!.hashCode);
 
   @override
-  String toString() => 'WiThingsSyncUser[userInfoId=$userInfoId]';
+  String toString() => 'WiThingsSyncUser[userId=$userId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.userInfoId != null) {
-      json[r'userInfoId'] = this.userInfoId;
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
     } else {
-      json[r'userInfoId'] = null;
+      json[r'userId'] = null;
     }
     return json;
   }
@@ -65,7 +65,7 @@ class WiThingsSyncUser {
       }());
 
       return WiThingsSyncUser(
-        userInfoId: mapValueOfType<int>(json, r'userInfoId'),
+        userId: mapValueOfType<String>(json, r'userId'),
       );
     }
     return null;
