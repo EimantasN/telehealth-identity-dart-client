@@ -13,7 +13,7 @@ part of openapi.api;
 class LoginCmd {
   /// Returns a new [LoginCmd] instance.
   LoginCmd({
-    this.user,
+    this.email,
     this.password,
   });
 
@@ -23,7 +23,7 @@ class LoginCmd {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? user;
+  String? email;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -35,24 +35,24 @@ class LoginCmd {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginCmd &&
-     other.user == user &&
+     other.email == email &&
      other.password == password;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (user == null ? 0 : user!.hashCode) +
+    (email == null ? 0 : email!.hashCode) +
     (password == null ? 0 : password!.hashCode);
 
   @override
-  String toString() => 'LoginCmd[user=$user, password=$password]';
+  String toString() => 'LoginCmd[email=$email, password=$password]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.user != null) {
-      json[r'user'] = this.user;
+    if (this.email != null) {
+      json[r'email'] = this.email;
     } else {
-      json[r'user'] = null;
+      json[r'email'] = null;
     }
     if (this.password != null) {
       json[r'password'] = this.password;
@@ -81,7 +81,7 @@ class LoginCmd {
       }());
 
       return LoginCmd(
-        user: mapValueOfType<String>(json, r'user'),
+        email: mapValueOfType<String>(json, r'email'),
         password: mapValueOfType<String>(json, r'password'),
       );
     }
