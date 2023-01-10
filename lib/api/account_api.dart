@@ -63,6 +63,115 @@ class AccountApi {
     return null;
   }
 
+  /// Performs an HTTP 'GET /api/Account/Confirm' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] user:
+  ///
+  /// * [String] code:
+  Future<Response> accountConfirmGETWithHttpInfo({ String? user, String? code, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Account/Confirm';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (user != null) {
+      queryParams.addAll(_queryParams('', 'User', user));
+    }
+    if (code != null) {
+      queryParams.addAll(_queryParams('', 'Code', code));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] user:
+  ///
+  /// * [String] code:
+  Future<MultipartFile?> accountConfirmGET({ String? user, String? code, }) async {
+    final response = await accountConfirmGETWithHttpInfo( user: user, code: code, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MultipartFile',) as MultipartFile;
+    
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /api/Account/NewEmailConfirmation' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] user:
+  Future<Response> accountConfirmPOSTWithHttpInfo({ String? user, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Account/NewEmailConfirmation';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (user != null) {
+      queryParams.addAll(_queryParams('', 'User', user));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] user:
+  Future<bool?> accountConfirmPOST({ String? user, }) async {
+    final response = await accountConfirmPOSTWithHttpInfo( user: user, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /api/Account/Login' operation and returns the [Response].
   /// Parameters:
   ///
