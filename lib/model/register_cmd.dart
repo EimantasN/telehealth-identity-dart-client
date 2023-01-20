@@ -18,6 +18,7 @@ class RegisterCmd {
     this.email,
     this.password,
     this.doctor,
+    this.language,
   });
 
   ///
@@ -60,13 +61,16 @@ class RegisterCmd {
   ///
   bool? doctor;
 
+  String? language;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is RegisterCmd &&
      other.firstName == firstName &&
      other.lastName == lastName &&
      other.email == email &&
      other.password == password &&
-     other.doctor == doctor;
+     other.doctor == doctor &&
+     other.language == language;
 
   @override
   int get hashCode =>
@@ -75,10 +79,11 @@ class RegisterCmd {
     (lastName == null ? 0 : lastName!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (password == null ? 0 : password!.hashCode) +
-    (doctor == null ? 0 : doctor!.hashCode);
+    (doctor == null ? 0 : doctor!.hashCode) +
+    (language == null ? 0 : language!.hashCode);
 
   @override
-  String toString() => 'RegisterCmd[firstName=$firstName, lastName=$lastName, email=$email, password=$password, doctor=$doctor]';
+  String toString() => 'RegisterCmd[firstName=$firstName, lastName=$lastName, email=$email, password=$password, doctor=$doctor, language=$language]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -107,6 +112,11 @@ class RegisterCmd {
     } else {
       json[r'doctor'] = null;
     }
+    if (this.language != null) {
+      json[r'language'] = this.language;
+    } else {
+      json[r'language'] = null;
+    }
     return json;
   }
 
@@ -134,6 +144,7 @@ class RegisterCmd {
         email: mapValueOfType<String>(json, r'email'),
         password: mapValueOfType<String>(json, r'password'),
         doctor: mapValueOfType<bool>(json, r'doctor'),
+        language: mapValueOfType<String>(json, r'language'),
       );
     }
     return null;

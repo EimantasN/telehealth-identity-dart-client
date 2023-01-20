@@ -187,6 +187,8 @@ class ApiClient {
           return AddClaimCmdClaim.fromJson(value);
         case 'AddClaimOptionCmd':
           return AddClaimOptionCmd.fromJson(value);
+        case 'ChangeLanguageCmd':
+          return ChangeLanguageCmd.fromJson(value);
         case 'ChangePasswordCmd':
           return ChangePasswordCmd.fromJson(value);
         case 'ClaimDto':

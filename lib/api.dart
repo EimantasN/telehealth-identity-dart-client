@@ -38,6 +38,7 @@ part 'api/wi_things_callback_api.dart';
 part 'model/add_claim_cmd.dart';
 part 'model/add_claim_cmd_claim.dart';
 part 'model/add_claim_option_cmd.dart';
+part 'model/change_language_cmd.dart';
 part 'model/change_password_cmd.dart';
 part 'model/claim_dto.dart';
 part 'model/i_identity.dart';
