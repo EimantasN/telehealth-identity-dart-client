@@ -13,18 +13,9 @@ part of openapi.api;
 class ChangePasswordCmd {
   /// Returns a new [ChangePasswordCmd] instance.
   ChangePasswordCmd({
-    this.user,
     this.password,
     this.code,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? user;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -44,27 +35,20 @@ class ChangePasswordCmd {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ChangePasswordCmd &&
-     other.user == user &&
      other.password == password &&
      other.code == code;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (user == null ? 0 : user!.hashCode) +
     (password == null ? 0 : password!.hashCode) +
     (code == null ? 0 : code!.hashCode);
 
   @override
-  String toString() => 'ChangePasswordCmd[user=$user, password=$password, code=$code]';
+  String toString() => 'ChangePasswordCmd[password=$password, code=$code]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.user != null) {
-      json[r'user'] = this.user;
-    } else {
-      json[r'user'] = null;
-    }
     if (this.password != null) {
       json[r'password'] = this.password;
     } else {
@@ -97,7 +81,6 @@ class ChangePasswordCmd {
       }());
 
       return ChangePasswordCmd(
-        user: mapValueOfType<String>(json, r'user'),
         password: mapValueOfType<String>(json, r'password'),
         code: mapValueOfType<String>(json, r'code'),
       );
