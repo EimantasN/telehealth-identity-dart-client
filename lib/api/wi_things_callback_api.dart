@@ -16,7 +16,7 @@ class WiThingsCallbackApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'GET /Callback' operation and returns the [Response].
+  /// Performs an HTTP 'GET /api/WiThingsCallback/Callback' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] code:
@@ -24,7 +24,7 @@ class WiThingsCallbackApi {
   /// * [String] state:
   Future<Response> wiThingsCallbackCallbackWithHttpInfo({ String? code, String? state, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/Callback';
+    final path = r'/api/WiThingsCallback/Callback';
 
     // ignore: prefer_final_locals
     Object? postBody;
