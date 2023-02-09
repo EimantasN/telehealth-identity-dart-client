@@ -10,14 +10,11 @@
 
 part of openapi.api;
 
-class RegisterResultDto {
-  /// Returns a new [RegisterResultDto] instance.
-  RegisterResultDto({
-    this.accessToken,
+class RegisterResultDtoAllOf {
+  /// Returns a new [RegisterResultDtoAllOf] instance.
+  RegisterResultDtoAllOf({
     this.success,
   });
-
-  String? accessToken;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -28,26 +25,19 @@ class RegisterResultDto {
   bool? success;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is RegisterResultDto &&
-     other.accessToken == accessToken &&
+  bool operator ==(Object other) => identical(this, other) || other is RegisterResultDtoAllOf &&
      other.success == success;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (accessToken == null ? 0 : accessToken!.hashCode) +
     (success == null ? 0 : success!.hashCode);
 
   @override
-  String toString() => 'RegisterResultDto[accessToken=$accessToken, success=$success]';
+  String toString() => 'RegisterResultDtoAllOf[success=$success]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.accessToken != null) {
-      json[r'accessToken'] = this.accessToken;
-    } else {
-      json[r'accessToken'] = null;
-    }
     if (this.success != null) {
       json[r'success'] = this.success;
     } else {
@@ -56,10 +46,10 @@ class RegisterResultDto {
     return json;
   }
 
-  /// Returns a new [RegisterResultDto] instance and imports its values from
+  /// Returns a new [RegisterResultDtoAllOf] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static RegisterResultDto? fromJson(dynamic value) {
+  static RegisterResultDtoAllOf? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -68,25 +58,24 @@ class RegisterResultDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "RegisterResultDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "RegisterResultDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "RegisterResultDtoAllOf[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "RegisterResultDtoAllOf[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return RegisterResultDto(
-        accessToken: mapValueOfType<String>(json, r'accessToken'),
+      return RegisterResultDtoAllOf(
         success: mapValueOfType<bool>(json, r'success'),
       );
     }
     return null;
   }
 
-  static List<RegisterResultDto>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <RegisterResultDto>[];
+  static List<RegisterResultDtoAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <RegisterResultDtoAllOf>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = RegisterResultDto.fromJson(row);
+        final value = RegisterResultDtoAllOf.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -95,12 +84,12 @@ class RegisterResultDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, RegisterResultDto> mapFromJson(dynamic json) {
-    final map = <String, RegisterResultDto>{};
+  static Map<String, RegisterResultDtoAllOf> mapFromJson(dynamic json) {
+    final map = <String, RegisterResultDtoAllOf>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = RegisterResultDto.fromJson(entry.value);
+        final value = RegisterResultDtoAllOf.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -109,13 +98,13 @@ class RegisterResultDto {
     return map;
   }
 
-  // maps a json object with a list of RegisterResultDto-objects as value to a dart map
-  static Map<String, List<RegisterResultDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<RegisterResultDto>>{};
+  // maps a json object with a list of RegisterResultDtoAllOf-objects as value to a dart map
+  static Map<String, List<RegisterResultDtoAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<RegisterResultDtoAllOf>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = RegisterResultDto.listFromJson(entry.value, growable: growable,);
+        final value = RegisterResultDtoAllOf.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

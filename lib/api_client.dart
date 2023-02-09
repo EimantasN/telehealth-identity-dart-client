@@ -211,6 +211,8 @@ class ApiClient {
           return RegisterModel.fromJson(value);
         case 'RegisterResultDto':
           return RegisterResultDto.fromJson(value);
+        case 'RegisterResultDtoAllOf':
+          return RegisterResultDtoAllOf.fromJson(value);
         case 'ResetPasswordCmd':
           return ResetPasswordCmd.fromJson(value);
         case 'ResetPasswordDto':
