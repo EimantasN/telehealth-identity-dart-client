@@ -13,11 +13,8 @@ part of openapi.api;
 class RegisterResultDto {
   /// Returns a new [RegisterResultDto] instance.
   RegisterResultDto({
-    this.accessToken,
     this.success,
   });
-
-  String? accessToken;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -29,25 +26,18 @@ class RegisterResultDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is RegisterResultDto &&
-     other.accessToken == accessToken &&
      other.success == success;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (accessToken == null ? 0 : accessToken!.hashCode) +
     (success == null ? 0 : success!.hashCode);
 
   @override
-  String toString() => 'RegisterResultDto[accessToken=$accessToken, success=$success]';
+  String toString() => 'RegisterResultDto[success=$success]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.accessToken != null) {
-      json[r'accessToken'] = this.accessToken;
-    } else {
-      json[r'accessToken'] = null;
-    }
     if (this.success != null) {
       json[r'success'] = this.success;
     } else {
@@ -75,7 +65,6 @@ class RegisterResultDto {
       }());
 
       return RegisterResultDto(
-        accessToken: mapValueOfType<String>(json, r'accessToken'),
         success: mapValueOfType<bool>(json, r'success'),
       );
     }
