@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://identity.telehealth.endev.lt', this.authentication,});
+  ApiClient({this.basePath = 'https://identity.viallies.com', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
