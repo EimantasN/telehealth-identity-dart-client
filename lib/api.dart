@@ -29,26 +29,19 @@ part 'auth/http_bearer_auth.dart';
 
 part 'api/account_api.dart';
 part 'api/auth_api.dart';
-part 'api/claims_api.dart';
 part 'api/identity_api.dart';
 part 'api/user_api.dart';
 part 'api/wi_things_api.dart';
 part 'api/wi_things_callback_api.dart';
 
-part 'model/add_claim_cmd.dart';
-part 'model/add_claim_cmd_claim.dart';
-part 'model/add_claim_option_cmd.dart';
 part 'model/change_language_cmd.dart';
 part 'model/change_password_cmd.dart';
-part 'model/claim_dto.dart';
 part 'model/i_identity.dart';
 part 'model/login_cmd.dart';
-part 'model/login_model.dart';
 part 'model/login_result_dto.dart';
 part 'model/logout_cmd.dart';
 part 'model/logout_dto.dart';
 part 'model/register_cmd.dart';
-part 'model/register_model.dart';
 part 'model/register_result_dto.dart';
 part 'model/register_result_dto_all_of.dart';
 part 'model/reset_password_cmd.dart';

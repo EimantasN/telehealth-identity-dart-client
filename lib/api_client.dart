@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://identity.telehealth.endev.lt', this.authentication,});
+  ApiClient({this.basePath = 'https://identity.viallies.com', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -181,24 +181,14 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
-        case 'AddClaimCmd':
-          return AddClaimCmd.fromJson(value);
-        case 'AddClaimCmdClaim':
-          return AddClaimCmdClaim.fromJson(value);
-        case 'AddClaimOptionCmd':
-          return AddClaimOptionCmd.fromJson(value);
         case 'ChangeLanguageCmd':
           return ChangeLanguageCmd.fromJson(value);
         case 'ChangePasswordCmd':
           return ChangePasswordCmd.fromJson(value);
-        case 'ClaimDto':
-          return ClaimDto.fromJson(value);
         case 'IIdentity':
           return IIdentity.fromJson(value);
         case 'LoginCmd':
           return LoginCmd.fromJson(value);
-        case 'LoginModel':
-          return LoginModel.fromJson(value);
         case 'LoginResultDto':
           return LoginResultDto.fromJson(value);
         case 'LogoutCmd':
@@ -207,8 +197,6 @@ class ApiClient {
           return LogoutDto.fromJson(value);
         case 'RegisterCmd':
           return RegisterCmd.fromJson(value);
-        case 'RegisterModel':
-          return RegisterModel.fromJson(value);
         case 'RegisterResultDto':
           return RegisterResultDto.fromJson(value);
         case 'RegisterResultDtoAllOf':
