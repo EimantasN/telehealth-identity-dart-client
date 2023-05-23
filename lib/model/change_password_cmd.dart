@@ -88,7 +88,7 @@ class ChangePasswordCmd {
     return null;
   }
 
-  static List<ChangePasswordCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ChangePasswordCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ChangePasswordCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -119,12 +119,10 @@ class ChangePasswordCmd {
   static Map<String, List<ChangePasswordCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ChangePasswordCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ChangePasswordCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ChangePasswordCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

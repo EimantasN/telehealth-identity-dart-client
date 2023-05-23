@@ -65,7 +65,7 @@ class LoginResultDto {
     return null;
   }
 
-  static List<LoginResultDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<LoginResultDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <LoginResultDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -96,12 +96,10 @@ class LoginResultDto {
   static Map<String, List<LoginResultDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<LoginResultDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = LoginResultDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = LoginResultDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

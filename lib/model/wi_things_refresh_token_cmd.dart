@@ -71,7 +71,7 @@ class WiThingsRefreshTokenCmd {
     return null;
   }
 
-  static List<WiThingsRefreshTokenCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<WiThingsRefreshTokenCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <WiThingsRefreshTokenCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -102,12 +102,10 @@ class WiThingsRefreshTokenCmd {
   static Map<String, List<WiThingsRefreshTokenCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<WiThingsRefreshTokenCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = WiThingsRefreshTokenCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = WiThingsRefreshTokenCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
