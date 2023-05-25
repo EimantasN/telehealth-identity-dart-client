@@ -14,11 +14,14 @@ class IdentityUserDto {
   /// Returns a new [IdentityUserDto] instance.
   IdentityUserDto({
     this.userId,
+    this.email,
     this.withingsActive,
     this.expires,
   });
 
   String? userId;
+
+  String? email;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -33,6 +36,7 @@ class IdentityUserDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is IdentityUserDto &&
      other.userId == userId &&
+     other.email == email &&
      other.withingsActive == withingsActive &&
      other.expires == expires;
 
@@ -40,11 +44,12 @@ class IdentityUserDto {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (userId == null ? 0 : userId!.hashCode) +
+    (email == null ? 0 : email!.hashCode) +
     (withingsActive == null ? 0 : withingsActive!.hashCode) +
     (expires == null ? 0 : expires!.hashCode);
 
   @override
-  String toString() => 'IdentityUserDto[userId=$userId, withingsActive=$withingsActive, expires=$expires]';
+  String toString() => 'IdentityUserDto[userId=$userId, email=$email, withingsActive=$withingsActive, expires=$expires]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -52,6 +57,11 @@ class IdentityUserDto {
       json[r'userId'] = this.userId;
     } else {
       json[r'userId'] = null;
+    }
+    if (this.email != null) {
+      json[r'email'] = this.email;
+    } else {
+      json[r'email'] = null;
     }
     if (this.withingsActive != null) {
       json[r'withingsActive'] = this.withingsActive;
@@ -86,6 +96,7 @@ class IdentityUserDto {
 
       return IdentityUserDto(
         userId: mapValueOfType<String>(json, r'userId'),
+        email: mapValueOfType<String>(json, r'email'),
         withingsActive: mapValueOfType<bool>(json, r'withingsActive'),
         expires: mapDateTime(json, r'expires', ''),
       );
