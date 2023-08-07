@@ -43,6 +43,7 @@ part 'model/login_cmd.dart';
 part 'model/login_result_dto.dart';
 part 'model/logout_cmd.dart';
 part 'model/logout_dto.dart';
+part 'model/refresh_token_dto.dart';
 part 'model/register_cmd.dart';
 part 'model/register_result_dto.dart';
 part 'model/register_result_dto_all_of.dart';

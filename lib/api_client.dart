@@ -197,6 +197,8 @@ class ApiClient {
           return LogoutCmd.fromJson(value);
         case 'LogoutDto':
           return LogoutDto.fromJson(value);
+        case 'RefreshTokenDto':
+          return RefreshTokenDto.fromJson(value);
         case 'RegisterCmd':
           return RegisterCmd.fromJson(value);
         case 'RegisterResultDto':
