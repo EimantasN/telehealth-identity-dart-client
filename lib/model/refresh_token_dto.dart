@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class LoginResultDto {
-  /// Returns a new [LoginResultDto] instance.
-  LoginResultDto({
+class RefreshTokenDto {
+  /// Returns a new [RefreshTokenDto] instance.
+  RefreshTokenDto({
     this.accessToken,
     this.refreshToken,
   });
@@ -22,7 +22,7 @@ class LoginResultDto {
   String? refreshToken;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is LoginResultDto &&
+  bool operator ==(Object other) => identical(this, other) || other is RefreshTokenDto &&
      other.accessToken == accessToken &&
      other.refreshToken == refreshToken;
 
@@ -33,7 +33,7 @@ class LoginResultDto {
     (refreshToken == null ? 0 : refreshToken!.hashCode);
 
   @override
-  String toString() => 'LoginResultDto[accessToken=$accessToken, refreshToken=$refreshToken]';
+  String toString() => 'RefreshTokenDto[accessToken=$accessToken, refreshToken=$refreshToken]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -50,10 +50,10 @@ class LoginResultDto {
     return json;
   }
 
-  /// Returns a new [LoginResultDto] instance and imports its values from
+  /// Returns a new [RefreshTokenDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static LoginResultDto? fromJson(dynamic value) {
+  static RefreshTokenDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -62,13 +62,13 @@ class LoginResultDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LoginResultDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LoginResultDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "RefreshTokenDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "RefreshTokenDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return LoginResultDto(
+      return RefreshTokenDto(
         accessToken: mapValueOfType<String>(json, r'accessToken'),
         refreshToken: mapValueOfType<String>(json, r'refreshToken'),
       );
@@ -76,11 +76,11 @@ class LoginResultDto {
     return null;
   }
 
-  static List<LoginResultDto> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <LoginResultDto>[];
+  static List<RefreshTokenDto> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <RefreshTokenDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = LoginResultDto.fromJson(row);
+        final value = RefreshTokenDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -89,12 +89,12 @@ class LoginResultDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, LoginResultDto> mapFromJson(dynamic json) {
-    final map = <String, LoginResultDto>{};
+  static Map<String, RefreshTokenDto> mapFromJson(dynamic json) {
+    final map = <String, RefreshTokenDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = LoginResultDto.fromJson(entry.value);
+        final value = RefreshTokenDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -103,14 +103,14 @@ class LoginResultDto {
     return map;
   }
 
-  // maps a json object with a list of LoginResultDto-objects as value to a dart map
-  static Map<String, List<LoginResultDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<LoginResultDto>>{};
+  // maps a json object with a list of RefreshTokenDto-objects as value to a dart map
+  static Map<String, List<RefreshTokenDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<RefreshTokenDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = LoginResultDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = RefreshTokenDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

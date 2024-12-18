@@ -10,14 +10,18 @@
 
 part of openapi.api;
 
-class UserInfoDto {
-  /// Returns a new [UserInfoDto] instance.
-  UserInfoDto({
-    this.id,
+class IdentityUserDto {
+  /// Returns a new [IdentityUserDto] instance.
+  IdentityUserDto({
     this.userId,
-    this.userName,
     this.email,
+    this.withingsActive,
+    this.expires,
   });
+
+  String? userId;
+
+  String? email;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -25,61 +29,57 @@ class UserInfoDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? id;
+  bool? withingsActive;
 
-  String? userId;
-
-  String? userName;
-
-  String? email;
+  DateTime? expires;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is UserInfoDto &&
-     other.id == id &&
+  bool operator ==(Object other) => identical(this, other) || other is IdentityUserDto &&
      other.userId == userId &&
-     other.userName == userName &&
-     other.email == email;
+     other.email == email &&
+     other.withingsActive == withingsActive &&
+     other.expires == expires;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
-    (userName == null ? 0 : userName!.hashCode) +
-    (email == null ? 0 : email!.hashCode);
+    (email == null ? 0 : email!.hashCode) +
+    (withingsActive == null ? 0 : withingsActive!.hashCode) +
+    (expires == null ? 0 : expires!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[id=$id, userId=$userId, userName=$userName, email=$email]';
+  String toString() => 'IdentityUserDto[userId=$userId, email=$email, withingsActive=$withingsActive, expires=$expires]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
     if (this.userId != null) {
       json[r'userId'] = this.userId;
     } else {
       json[r'userId'] = null;
-    }
-    if (this.userName != null) {
-      json[r'userName'] = this.userName;
-    } else {
-      json[r'userName'] = null;
     }
     if (this.email != null) {
       json[r'email'] = this.email;
     } else {
       json[r'email'] = null;
     }
+    if (this.withingsActive != null) {
+      json[r'withingsActive'] = this.withingsActive;
+    } else {
+      json[r'withingsActive'] = null;
+    }
+    if (this.expires != null) {
+      json[r'expires'] = this.expires!.toUtc().toIso8601String();
+    } else {
+      json[r'expires'] = null;
+    }
     return json;
   }
 
-  /// Returns a new [UserInfoDto] instance and imports its values from
+  /// Returns a new [IdentityUserDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static UserInfoDto? fromJson(dynamic value) {
+  static IdentityUserDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -88,27 +88,27 @@ class UserInfoDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UserInfoDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UserInfoDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "IdentityUserDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "IdentityUserDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return UserInfoDto(
-        id: mapValueOfType<int>(json, r'id'),
+      return IdentityUserDto(
         userId: mapValueOfType<String>(json, r'userId'),
-        userName: mapValueOfType<String>(json, r'userName'),
         email: mapValueOfType<String>(json, r'email'),
+        withingsActive: mapValueOfType<bool>(json, r'withingsActive'),
+        expires: mapDateTime(json, r'expires', ''),
       );
     }
     return null;
   }
 
-  static List<UserInfoDto> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <UserInfoDto>[];
+  static List<IdentityUserDto> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <IdentityUserDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = UserInfoDto.fromJson(row);
+        final value = IdentityUserDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -117,12 +117,12 @@ class UserInfoDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, UserInfoDto> mapFromJson(dynamic json) {
-    final map = <String, UserInfoDto>{};
+  static Map<String, IdentityUserDto> mapFromJson(dynamic json) {
+    final map = <String, IdentityUserDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = UserInfoDto.fromJson(entry.value);
+        final value = IdentityUserDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -131,14 +131,14 @@ class UserInfoDto {
     return map;
   }
 
-  // maps a json object with a list of UserInfoDto-objects as value to a dart map
-  static Map<String, List<UserInfoDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<UserInfoDto>>{};
+  // maps a json object with a list of IdentityUserDto-objects as value to a dart map
+  static Map<String, List<IdentityUserDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<IdentityUserDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UserInfoDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = IdentityUserDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

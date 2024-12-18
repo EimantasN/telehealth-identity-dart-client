@@ -14,10 +14,13 @@ class RegisterResultDto {
   /// Returns a new [RegisterResultDto] instance.
   RegisterResultDto({
     this.accessToken,
+    this.refreshToken,
     this.success,
   });
 
   String? accessToken;
+
+  String? refreshToken;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -30,16 +33,18 @@ class RegisterResultDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is RegisterResultDto &&
      other.accessToken == accessToken &&
+     other.refreshToken == refreshToken &&
      other.success == success;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (accessToken == null ? 0 : accessToken!.hashCode) +
+    (refreshToken == null ? 0 : refreshToken!.hashCode) +
     (success == null ? 0 : success!.hashCode);
 
   @override
-  String toString() => 'RegisterResultDto[accessToken=$accessToken, success=$success]';
+  String toString() => 'RegisterResultDto[accessToken=$accessToken, refreshToken=$refreshToken, success=$success]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -47,6 +52,11 @@ class RegisterResultDto {
       json[r'accessToken'] = this.accessToken;
     } else {
       json[r'accessToken'] = null;
+    }
+    if (this.refreshToken != null) {
+      json[r'refreshToken'] = this.refreshToken;
+    } else {
+      json[r'refreshToken'] = null;
     }
     if (this.success != null) {
       json[r'success'] = this.success;
@@ -76,13 +86,14 @@ class RegisterResultDto {
 
       return RegisterResultDto(
         accessToken: mapValueOfType<String>(json, r'accessToken'),
+        refreshToken: mapValueOfType<String>(json, r'refreshToken'),
         success: mapValueOfType<bool>(json, r'success'),
       );
     }
     return null;
   }
 
-  static List<RegisterResultDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<RegisterResultDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <RegisterResultDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -113,12 +124,10 @@ class RegisterResultDto {
   static Map<String, List<RegisterResultDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<RegisterResultDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = RegisterResultDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = RegisterResultDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
