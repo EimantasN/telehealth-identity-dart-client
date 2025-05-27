@@ -7,7 +7,7 @@ version: "1.0.0"
 description: "Viallies Identity API client"
 homepage: "https://github.com/EimantasN/telehealth-identity-dart-client"
 environment:
-  sdk: "3.7.2"
+  sdk: ">=3.7.2"
 dependencies:
   http: ">=0.13.0 <0.14.0"
   intl: "^0.18.0"
